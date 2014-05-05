@@ -5,10 +5,27 @@ require 'optparse'
 require 'postmon_ruby'
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: #{File.basename($0)} [command] [value]"
+  opts.banner = "Usage: #{File.basename($0)} <command> [value]"
 
   opts.parse!(ARGV)
 end
+
+readme = <<-HELP
+Usage: postmon <command> [value]
+
+Commands:
+  cep       Consultar CEP
+            ex: postmon cep 49015040
+
+  cidade    Consultar informações de uma cidade
+            ex: postmon cidade SE Aracaju
+
+  estado    Consultar informações de um estado
+            ex: postmon estado SE
+
+  rastreio  Consultar informações de rastreio de um pacote
+            ex: postmon rastreio AA987654321BR
+HELP
 
 unless ARGV.empty?
   case ARGV.first
@@ -20,7 +37,7 @@ unless ARGV.empty?
     PostmonRuby::GemOutput.estado(ARGV.last)
   when "rastreio"
     PostmonRuby::GemOutput.rastreio(ARGV.last)
-  else
-    puts "Opção inválida"
   end
+else
+  puts readme
 end
