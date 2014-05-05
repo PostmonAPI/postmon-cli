@@ -4,25 +4,23 @@
 require 'optparse'
 require 'postmon_ruby'
 
-options = {}
-
 OptionParser.new do |opts|
-  opts.banner = "Usage postmon [options]"
-  opts.on("--cep CEP", String, "Consultar CEP") do |cep|
-    options[:cep] = cep
+  opts.banner = "Usage: #{File.basename($0)} [command] [value]"
+
+  opts.parse!(ARGV)
+end
+
+unless ARGV.empty?
+  case ARGV.first
+  when "cep"
+    PostmonRuby::GemOutput.cep(ARGV.last)
+  when "cidade"
+    PostmonRuby::GemOutput.cidade(ARGV[1], ARGV[2])
+  when "estado"
+    PostmonRuby::GemOutput.estado(ARGV.last)
+  when "rastreio"
+    PostmonRuby::GemOutput.rastreio(ARGV.last)
+  else
+    puts "Opção inválida"
   end
-
-  opts.on("--cidade UF,Cidade", Array, "Consultar informações de uma cidade") do |uf_cidade|
-    options[:cidade] = uf_cidade
-  end
-
-  opts.on("--estado UF", String, "Consultar informações de um estado") do |uf|
-    options[:estado] = uf
-  end
-
-  opts.on("--rastreio CODIGO_POSTAGEM", String, "Consultar informações de rastreio de um pacote") do |rastreio|
-    options[:rastreio] = rastreio
-  end  
-end.parse!
-
-PostmonRuby::GemOutput.get_info(options)
+end
