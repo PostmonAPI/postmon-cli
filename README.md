@@ -1,7 +1,7 @@
 # PostmonCli
 
-Consulte informações como CEP, dados de estados e cidades e acompanhe onde o seu pedido enviado
-pelos correios está, tudo pelo bash :)
+Consulte informações como CEP, dados de estados e cidades ou acompanhe o seu pedido enviado
+pelos correios, tudo pelo bash :)
 
 ## Instalação
 
@@ -21,7 +21,7 @@ pelos correios está, tudo pelo bash :)
 
 #### Consultar informações de uma cidade:
 
-    $ postmon cidade SE,Aracaju
+    $ postmon cidade SE Aracaju
 
     Area_km2: 181,857
     Codigo_ibge: 2800308
@@ -66,8 +66,5 @@ pelos correios está, tudo pelo bash :)
 
 ## Contribua
 
-1. Fork o PostmonCli
-2. Crie seu branch com as novas implementações ou correções (`git checkout -b my-new-feature`)
-3. Commit suas mudanças (`git commit -am 'Add some feature'`)
-4. Dê Push (`git push origin my-new-feature`)
-5. Crie um Pull Request
+O PostmonCli utiliza o PostmonAPI para Ruby, a gem PostmonRuby(https://github.com/PostmonAPI/postmon-ruby).
+Todo tipo de contribuição é sempre bem-vinda(a). :wink:
