@@ -7,16 +7,16 @@ readme = <<-HELP
 
   Commands:
   cep       Consultar CEP
-  ex: postmon cep 49015040
+            ex: postmon cep 49015040
 
   cidade    Consultar informações de uma cidade
-  ex: postmon cidade SE Aracaju
+            ex: postmon cidade SE Aracaju
 
   estado    Consultar informações de um estado
-  ex: postmon estado SE
+            ex: postmon estado SE
 
   rastreio  Consultar informações de rastreio de um pacote
-  ex: postmon rastreio AA987654321BR
+            ex: postmon rastreio AA987654321BR
 HELP
 
 unless ARGV.empty?
