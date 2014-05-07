@@ -1,4 +1,4 @@
-# PostmonCli
+# PostmonCli [![Build Status](https://travis-ci.org/PostmonAPI/postmon-cli.svg?branch=master)](https://travis-ci.org/PostmonAPI/postmon-cli) [![Code Climate](https://codeclimate.com/github/PostmonAPI/postmon-cli.png)](https://codeclimate.com/github/PostmonAPI/postmon-cli)
 
 Consulte informações como CEP, dados de estados e cidades ou acompanhe o seu pedido enviado
 pelos correios, tudo pelo bash :)
