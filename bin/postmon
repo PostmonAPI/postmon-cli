@@ -23,13 +23,13 @@ HELP
 unless ARGV.empty?
   case ARGV.first
   when "cep"
-    PostmonCli::Wrapper.get_cep(ARGV.last)
+    PostmonCli::Wrapper.cep(ARGV.last)
   when "cidade"
-    PostmonCli::Wrapper.get_cidade(ARGV[1], ARGV[2])
+    PostmonCli::Wrapper.cidade(ARGV[1], ARGV[2])
   when "estado"
-    PostmonCli::Wrapper.get_estado(ARGV.last)
+    PostmonCli::Wrapper.estado(ARGV.last)
   when "rastreio"
-    PostmonCli::Wrapper.get_rastreio(ARGV.last)
+    PostmonCli::Wrapper.rastreio(ARGV.last)
   else
     puts "Opção inválida"
   end
