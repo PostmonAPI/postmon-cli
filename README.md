@@ -67,4 +67,4 @@ pelos correios, tudo pelo bash :)
 ## Contribua
 
 O PostmonCli utiliza o PostmonAPI para Ruby, a gem PostmonRuby(https://github.com/PostmonAPI/postmon-ruby).
-Todo tipo de contribuição é sempre bem-vinda(a). :wink:
+Todo tipo de contribuição é sempre bem-vinda. :wink:
