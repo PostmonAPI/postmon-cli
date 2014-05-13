@@ -2,37 +2,56 @@
 # encoding: utf-8
 
 require 'postmon_cli'
+require 'optparse'
 
-readme = <<-HELP
-  Usage: postmon <command> [value]
+options = {}
 
-  Commands:
-  cep       Consultar CEP
-            ex: postmon cep 49015040
+opt_parser = OptionParser.new do |opt|
+  opt.banner =  "Usage postmon <command> [options] [value]"
+  opt.separator ""
+  opt.separator " Commands"
+  opt.separator "   cep       Consultar CEP"
+  opt.separator "             ex: postmon cep 49015040"
+  opt.separator ""
+  opt.separator "   cidade    Consultar informações de uma cidade"
+  opt.separator "             ex: postmon cidade SE Aracaju"
+  opt.separator ""
+  opt.separator "   estado    Consultar informações de um estado"
+  opt.separator "             ex: postmon estado SE"
+  opt.separator ""
+  opt.separator "   rastreio  Consultar informações de rastreio de um pacote"
+  opt.separator "             ex: postmon rastreio AA987654321BR"
+  opt.separator ""
+  opt.separator " Options"
 
-  cidade    Consultar informações de uma cidade
-            ex: postmon cidade SE Aracaju
-
-  estado    Consultar informações de um estado
-            ex: postmon estado SE
-
-  rastreio  Consultar informações de rastreio de um pacote
-            ex: postmon rastreio AA987654321BR
-HELP
-
-unless ARGV.empty?
-  case ARGV.first
-  when "cep"
-    PostmonCli::Wrapper.cep(ARGV.last)
-  when "cidade"
-    PostmonCli::Wrapper.cidade(ARGV[1], ARGV[2])
-  when "estado"
-    PostmonCli::Wrapper.estado(ARGV.last)
-  when "rastreio"
-    PostmonCli::Wrapper.rastreio(ARGV.last)
-  else
-    puts "Opção inválida"
+  opt.on("-s", "--save", "Salva o resultado para consultas posteriores") do |save|
+    options[:save] = save
   end
+
+  opt.on("-f", "--first", "Pesquisa pelo primeiro") do |first|
+    options[:first] = first
+  end
+
+  opt.on("-l", "--last", "Pesquisa pelo útimo") do |last|
+    options[:last] = last
+  end
+
+  opt.on("-c", "--clear", "Remove todo o histórico") do |clear|
+    options[:clear] = clear
+  end
+end
+
+opt_parser.parse!
+
+case ARGV.first
+when "cep"
+  PostmonCli::Wrapper.cep(ARGV.last)
+when "cidade"
+  PostmonCli::Wrapper.cidade(ARGV[1], ARGV[2])
+when "estado"
+  PostmonCli::Wrapper.estado(ARGV.last)
+when "rastreio"
+  PostmonCli::Wrapper.rastreio(ARGV.last)
 else
-  puts readme
+  puts opt_parser
 end
