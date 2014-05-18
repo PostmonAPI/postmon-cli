@@ -1,11 +1,12 @@
 require './test/test_helper'
 require 'postmon_cli/wrapper'
+require 'postmon_cli/output'
 
 class WrapperTest < Minitest::Test
   def setup
-    @cep = PostmonCli::Wrapper.get_cep('49097320').to_s
-    @cidade = PostmonCli::Wrapper.get_cidade('SE', 'Aracaju').to_s
-    @estado = PostmonRuby::GemOutput.estado('SE').to_s
+    @cep = PostmonCli::Wrapper.cep('49097320').to_s
+    @cidade = PostmonCli::Wrapper.cidade('SE', 'Aracaju').to_s
+    @estado = PostmonCli::Wrapper.estado('SE').to_s
   end
 
   def test_get_cep
